@@ -10,106 +10,166 @@
 <!-- <meta property="og:image" content="https://SEU-DOMINIO/preview.jpg"> -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #09070f;
-    --surface: #14111d;
-    --surface-2: #0e0b16;
-    --border: #2a2438;
-    --text: #f3f0fa;
-    --muted: #9a93ad;
-    --violet: #8b5cf6;
-    --violet-light: #a78bfa;
-    --violet-deep: #5b21b6;
+    --bg: #0a1020;
+    --paper: #f6f0dd;
+    --paper-2: #ece3c8;
+    --ink: #17203a;
+    --ink-2: #6b644f;
+    --gold: #f2c41b;
+    --gold-deep: #c8940a;
+    --edge: #10131a;
+    --red: #e24033;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     min-height: 100vh;
     background:
-      radial-gradient(600px 300px at 50% -80px, rgba(139,92,246,.22), transparent 70%),
+      radial-gradient(900px 420px at 50% -160px, rgba(96,128,255,.15), transparent 70%),
+      radial-gradient(circle at 60px 60px, rgba(255,255,255,.05) 4px, transparent 5px),
+      radial-gradient(circle at 60px 60px, transparent 24px, rgba(255,255,255,.04) 24px 26px, transparent 27px),
       var(--bg);
-    color: var(--text);
-    font-family: "Space Grotesk", system-ui, sans-serif;
+    background-size: auto, 120px 120px, 120px 120px, auto;
+    color: var(--paper);
+    font-family: "Archivo", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  main { max-width: 480px; margin: 0 auto; padding: 40px 16px 48px; }
+  main { max-width: 480px; margin: 0 auto; padding: 44px 16px 48px; }
 
   header { text-align: center; }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .kicker::before {
+    content: ""; width: 11px; height: 11px; border-radius: 50%; flex: none;
+    background: linear-gradient(180deg, var(--red) 42%, #0c0c0c 42% 58%, #f4f1e6 58%);
+    box-shadow: 0 0 0 1.5px rgba(244,241,230,.35);
+  }
   .avatar {
-    width: 104px; height: 104px; margin: 0 auto 16px;
-    border-radius: 50%; overflow: hidden;
+    position: relative;
+    width: 78px; height: 106px; margin: 18px auto;
+    border-radius: 10px; overflow: hidden;
     display: grid; place-items: center;
-    background: #fff; color: #000;
-    font-weight: 700; font-size: 28px; letter-spacing: -1px;
-    border: 2px solid var(--violet);
-    box-shadow: 0 0 28px rgba(139,92,246,.45);
+    background: linear-gradient(180deg, var(--paper), var(--paper-2));
+    color: var(--ink);
+    font-family: "Archivo Black", "Archivo", sans-serif;
+    font-size: 21px;
+    border: 6px solid var(--gold);
+    box-shadow: inset 0 0 0 2px var(--edge), 0 14px 30px rgba(0,0,0,.5);
+    transform: rotate(-4deg);
+    transition: transform .25s ease;
+  }
+  .avatar:hover { transform: rotate(0deg) scale(1.04); }
+  .avatar::after {
+    content: "★"; position: absolute; bottom: 5px; left: 0; right: 0;
+    font-size: 9px; color: var(--gold-deep);
   }
   .avatar img { width: 100%; height: 100%; object-fit: cover; }
-  h1 { font-size: 26px; font-weight: 700; color: var(--violet-light); letter-spacing: -.3px; }
-  .tagline { margin-top: 8px; font-size: 14px; line-height: 1.6; color: var(--muted); }
+  h1 {
+    font-family: "Archivo Black", "Archivo", sans-serif;
+    font-size: 32px; color: #f9f6ea; letter-spacing: -.5px;
+  }
+  .tagline { margin-top: 10px; font-size: 14px; line-height: 1.7; color: rgba(246,240,221,.72); }
   .tagline span { white-space: nowrap; }
 
-  .socials { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
+  .socials { display: flex; justify-content: center; gap: 12px; margin-top: 22px; }
   .socials a {
-    width: 44px; height: 44px; border-radius: 50%;
+    width: 44px; height: 44px; border-radius: 12px;
     display: grid; place-items: center;
-    background: var(--surface); border: 1px solid var(--border);
-    color: var(--text); transition: all .15s;
+    background: rgba(246,240,221,.06);
+    border: 2px solid rgba(242,196,27,.45);
+    color: var(--paper); transition: all .15s;
   }
-  .socials a:hover { border-color: var(--violet); color: var(--violet-light); transform: translateY(-2px); }
+  .socials a:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); transform: translateY(-2px); }
   svg { width: 20px; height: 20px; fill: currentColor; }
 
-  nav { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+  nav { display: flex; flex-direction: column; gap: 14px; margin-top: 34px; }
   .card {
+    position: relative; overflow: hidden;
     display: flex; align-items: center; gap: 14px;
-    padding: 14px 16px; border-radius: 14px;
-    background: linear-gradient(180deg, var(--surface), var(--surface-2));
-    border: 1px solid var(--border);
+    padding: 16px 18px; border-radius: 14px;
+    background: linear-gradient(180deg, var(--paper), var(--paper-2));
+    border: 5px solid var(--gold);
+    box-shadow: inset 0 0 0 2px var(--edge), 0 10px 24px rgba(0,0,0,.38);
     color: inherit; text-decoration: none;
-    transition: transform .15s, border-color .15s, box-shadow .15s;
+    -webkit-tap-highlight-color: transparent;
+    transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));
+    transition: transform .35s cubic-bezier(.2,.8,.3,1), box-shadow .2s;
+    will-change: transform;
   }
-  .card:hover, .card:focus-visible {
-    transform: translateY(-2px); border-color: var(--violet);
-    box-shadow: 0 6px 20px rgba(139,92,246,.18); outline: none;
+  .card.tilting { transition: box-shadow .2s; }
+  .card:hover { --ty: -2px; box-shadow: inset 0 0 0 2px var(--edge), 0 16px 34px rgba(0,0,0,.5); }
+  .card:focus-visible { outline: 3px solid rgba(249,246,234,.9); outline-offset: 3px; }
+  .card::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(220px circle at var(--mx,50%) var(--my,-40%), rgba(255,255,255,.55), transparent 65%);
+    opacity: 0; transition: opacity .18s; mix-blend-mode: soft-light;
   }
-  .icon {
-    flex: none; width: 44px; height: 44px; border-radius: 10px;
-    display: grid; place-items: center;
-    background: #0b0912; border: 1px solid var(--border); color: var(--violet-light);
+  .card:hover::before { opacity: .8; }
+  .card::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(115deg, transparent 32%, rgba(255,64,160,.16), rgba(255,214,64,.2), rgba(64,200,255,.16), transparent 68%);
+    background-size: 260% 100%; background-position: 130% 0;
+    opacity: 0;
   }
-  .text { flex: 1; min-width: 0; }
-  .text strong { display: block; font-size: 15px; font-weight: 500; }
-  .text small { display: block; margin-top: 2px; font-size: 12px; color: var(--muted); }
-  .chevron { flex: none; color: var(--violet-light); font-size: 22px; line-height: 1; }
+  .card:hover::after { opacity: 1; animation: sweep .8s ease; }
+  @keyframes sweep { from { background-position: 135% 0; } to { background-position: -35% 0; } }
 
-  /* Destaque: loja oficial */
+  .icon {
+    flex: none; width: 46px; height: 46px; border-radius: 9px;
+    display: grid; place-items: center;
+    background: #fdfbf3; border: 2px solid var(--edge); color: var(--ink);
+    box-shadow: 2px 3px 0 rgba(16,19,26,.18);
+  }
+  .icon svg { width: 22px; height: 22px; }
+  .text { flex: 1; min-width: 0; }
+  .text strong { display: block; font-size: 15px; font-weight: 700; color: var(--ink); letter-spacing: -.1px; }
+  .text small { display: block; margin-top: 3px; font-size: 12.5px; color: var(--ink-2); }
+  .chevron { flex: none; color: rgba(23,32,58,.45); font-size: 24px; font-weight: 700; line-height: 1; }
+  .num {
+    position: absolute; right: 12px; bottom: 7px;
+    font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+    font-size: 9px; letter-spacing: .1em; color: rgba(23,32,58,.42);
+  }
+
+  /* Destaque: loja oficial — "carta dourada" */
   .card.featured {
     padding: 20px 18px;
-    background: linear-gradient(135deg, var(--violet-deep), var(--violet));
-    border-color: var(--violet-light);
-    box-shadow: 0 0 32px rgba(139,92,246,.5);
-    animation: glow 3s ease-in-out infinite;
+    background: linear-gradient(135deg, #ffe27a, var(--gold) 45%, #d9a90c);
+    border-color: #ffdf66;
+    box-shadow: inset 0 0 0 2px var(--edge), 0 12px 30px rgba(0,0,0,.45);
   }
-  .card.featured:hover { box-shadow: 0 0 40px rgba(167,139,250,.65); }
-  .card.featured .icon { width: 52px; height: 52px; background: rgba(0,0,0,.28); border-color: rgba(255,255,255,.25); color: #fff; }
-  .card.featured .text strong { font-size: 17px; font-weight: 700; color: #fff; }
-  .card.featured .text small { color: #e4dbff; }
-  .card.featured .chevron { color: #fff; }
+  .card.featured:hover { box-shadow: inset 0 0 0 2px var(--edge), 0 18px 38px rgba(0,0,0,.55); }
+  .card.featured::before { mix-blend-mode: normal; }
+  .card.featured::after { opacity: 1; animation: sweep 3.4s linear infinite; }
+  .card.featured .icon { width: 52px; height: 52px; background: var(--ink); border-color: var(--edge); color: var(--gold); box-shadow: 2px 3px 0 rgba(16,19,26,.3); }
+  .card.featured .icon svg { width: 26px; height: 26px; }
+  .card.featured .text strong { font-family: "Archivo Black", "Archivo", sans-serif; font-size: 16px; color: #10131a; }
+  .card.featured .text small { color: rgba(16,19,26,.72); font-weight: 500; }
+  .card.featured .chevron { color: rgba(16,19,26,.7); }
+  .card.featured .num { color: rgba(16,19,26,.5); }
   .badge {
-    display: inline-block; margin-bottom: 6px; padding: 2px 8px; border-radius: 99px;
-    background: rgba(255,255,255,.18); color: #fff;
-    font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    display: inline-block; margin-bottom: 6px; padding: 3px 9px; border-radius: 99px;
+    background: var(--ink); color: var(--gold);
+    font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
   }
-  @keyframes glow { 50% { box-shadow: 0 0 44px rgba(139,92,246,.7); } }
-  @media (prefers-reduced-motion: reduce) { .card.featured { animation: none; } .card { transition: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .card, .avatar { transition: none; }
+    .card::after, .card.featured::after { animation: none; }
+  }
 
-  footer { margin-top: 36px; text-align: center; font-size: 12px; color: #5f5873; }
+  footer { margin-top: 38px; text-align: center; font-size: 12px; color: rgba(246,240,221,.5); line-height: 1.8; }
+  footer small { display: block; font-size: 10px; color: rgba(246,240,221,.3); }
 </style>
 </head>
 <body>
 <main>
   <header>
+    <p class="kicker">Pokémon TCG · Slabs & Artes</p>
     <!-- Troque pelo seu logo: <img src="logo.jpg" alt="Hui TCG"> -->
     <div class="avatar">HUI</div>
     <h1>Hui TCG</h1>
@@ -134,11 +194,12 @@
         <svg viewBox="0 0 24 24"><path d="M19 7h-2.100A4.900 4.900 0 0 0 12 2a4.900 4.900 0 0 0-4.900 5H5a1 1 0 0 0-1 1.100l1 12A2 2 0 0 0 7 22h10a2 2 0 0 0 2-1.900l1-12A1 1 0 0 0 19 7Zm-7-3a2.900 2.900 0 0 1 2.800 3H9.200A2.900 2.900 0 0 1 12 4Z"/></svg>
       </span>
       <span class="text">
-        <span class="badge">Loja oficial</span>
+        <span class="badge">★ Loja oficial</span>
         <strong>HuiTCG | LOJA OFICIAL</strong>
         <small>Slabs Pokémon TCG e artes estendidas</small>
       </span>
       <span class="chevron" aria-hidden="true">›</span>
+      <span class="num" aria-hidden="true">HUI·001</span>
     </a>
 
     <!-- 2. Shopee -->
@@ -148,6 +209,7 @@
       </span>
       <span class="text"><strong>SHOPEE</strong><small>Compre também pela Shopee</small></span>
       <span class="chevron" aria-hidden="true">›</span>
+      <span class="num" aria-hidden="true">HUI·002</span>
     </a>
 
     <!-- 3. MYP Cards -->
@@ -157,6 +219,7 @@
       </span>
       <span class="text"><strong>HuiTCG | MYP Cards</strong><small>Cartas e slabs na MYP</small></span>
       <span class="chevron" aria-hidden="true">›</span>
+      <span class="num" aria-hidden="true">HUI·003</span>
     </a>
 
     <!-- 4. WhatsApp -->
@@ -166,6 +229,7 @@
       </span>
       <span class="text"><strong>Entre em contato - Whatsapp</strong><small>Pedidos personalizados e dúvidas</small></span>
       <span class="chevron" aria-hidden="true">›</span>
+      <span class="num" aria-hidden="true">HUI·004</span>
     </a>
 
     <!-- 5. Instagram -->
@@ -175,10 +239,36 @@
       </span>
       <span class="text"><strong>Instagram</strong><small>Novidades, slabs e artes</small></span>
       <span class="chevron" aria-hidden="true">›</span>
+      <span class="num" aria-hidden="true">HUI·005</span>
     </a>
   </nav>
 
-  <footer>© Hui TCG</footer>
+  <footer>
+    © Hui TCG
+    <small>Pokémon e seus personagens são marcas de Nintendo, Creatures Inc. e GAME FREAK inc.</small>
+  </footer>
 </main>
+<script>
+  const canTilt = matchMedia('(pointer: fine)').matches
+    && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (canTilt) {
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5;
+        const y = (e.clientY - r.top) / r.height - .5;
+        card.classList.add('tilting');
+        card.style.setProperty('--rx', (-y * 5) + 'deg');
+        card.style.setProperty('--ry', (x * 7) + 'deg');
+        card.style.setProperty('--mx', (x + .5) * 100 + '%');
+        card.style.setProperty('--my', (y + .5) * 100 + '%');
+      });
+      card.addEventListener('pointerleave', () => {
+        card.classList.remove('tilting');
+        ['--rx', '--ry', '--mx', '--my'].forEach(p => card.style.removeProperty(p));
+      });
+    });
+  }
+</script>
 </body>
 </html>
